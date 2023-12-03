@@ -1,2 +1,2 @@
 # SIMPLE SHELL PROJECT
-## Samuel Egundeyi and Chioma Ufende
+## Samuel Egundeyi and Ufoma Ifende

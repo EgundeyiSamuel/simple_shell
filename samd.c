@@ -3,7 +3,7 @@
 /**
  *main - prompt display function
  *
- *return: 0
+ * Return: Returns (0)
  */
 int main(void)
 {

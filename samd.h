@@ -24,8 +24,8 @@ void execute_command(char *command);
 
 /*to change directory */
 char* _strdup(const char *str);
-void set_env_var(const char *name, const char *value, shell_data *shdata);
-void error_code(shell_data *shdata, int code);
-void cdToParentDirectory(shell_data *shdata);
+void set_env_var(const char *name, const char *value, shell_data *shell_data);
+void error_code(shell_data *shell_data, int code);
+void cd_pd(shell_data *shell_data);
 
 #endif

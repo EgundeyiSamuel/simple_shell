@@ -1,9 +1,9 @@
-#include "ssh.h"
+#include "samd.h"
 
 /**
  *main - prompt display function
  *
- *Return: 0
+ * Return: Returns (0)
  */
 int main(void)
 {

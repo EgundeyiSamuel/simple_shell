@@ -36,7 +36,6 @@ void cd_pd(shell_data *shell_data);
 
 /*to read input*/
 void assign_line(char **outputptr, size_t *op_n, char *result, size_t ch);
-ssize_t read_output(char **output_ptr, size_t *op_n, FILE *stream);
 char *_read_output(int *d_eof);
 ssize_t read_output(char *output_ptr, size_t *op_n, FILE *input_stream);
 ssize_t read_or_eof(char *output_ptr, size_t *op_n, FILE *input_stream);

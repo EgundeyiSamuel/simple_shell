@@ -16,14 +16,20 @@
 /* ##_______ command prototype ________## */
 void execute_command(char *command);
 
-/**/
-  typedef struct {
-	  char** args;
-	  int status;
-}shell_data;
+/**
+ *struct - struct contains all relevant data on runtime
+ *@args: arguments
+ *@status: status
+ */
+	typedef struct
+{
+	char **args;
+	int status;
+}
+shell_data;
 
-/*to change directory */
-char* _strdup(const char *str);
+/* to change directory */
+char *_strdup(const char *str);
 void set_env_var(const char *name, const char *value, shell_data *shell_data);
 void error_code(shell_data *shell_data, int code);
 void cd_pd(shell_data *shell_data);
@@ -32,8 +38,8 @@ void cd_pd(shell_data *shell_data);
 void assign_line(char **outputptr, size_t *op_n, char *result, size_t ch);
 ssize_t read_output(char **output_ptr, size_t *op_n, FILE *stream);
 char *_read_output(int *d_eof);
-ssize_t read_output(char **output_ptr, size_t *op_n, FILE *input_stream);
-ssize_t read_or_eof(char **output_ptr, size_t *op_n, FILE *input_stream);
+ssize_t read_output(char *output_ptr, size_t *op_n, FILE *input_stream);
+ssize_t read_or_eof(char *output_ptr, size_t *op_n, FILE *input_stream);
 
 
 #endif

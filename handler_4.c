@@ -9,7 +9,7 @@
 
 int exec_command(Shell_data *shell_data)
 {
-	int (*builtin)(Shell_data *shell_data);
+	int (*builtin)(shell_data *shell_data);
 
 	if (shell_data->args[0] == NULL)
 		return (1);
@@ -27,7 +27,7 @@ int exec_command(Shell_data *shell_data)
  * @shell_data: data (status)
  * Return: 0 on success.
  */
-int exit_samd(Shell_data *shell_data)
+int exit_samd(shell_data *shell_data)
 {
 	unsigned int exitStatus;
 	int isDigit;

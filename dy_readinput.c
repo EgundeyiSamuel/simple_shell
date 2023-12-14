@@ -10,10 +10,10 @@ char *_read_output(int *d_eof)
 {
 
 	char *output = NULL;
-	size_t output_size = 0;
+	size_t op_n = 0;
 
 	/* eof to getline */
-	*d_eof = read_output(&output, &output_size, stdin);
+	*d_eof = read_output(&output, &op_n, stdin);
 
 	/* it should return output or eof */
 	return (output);

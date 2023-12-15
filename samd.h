@@ -33,6 +33,7 @@ char *_strdup(const char *str);
 void set_env_var(const char *name, const char *value, shell_data *shell_data);
 void error_code(shell_data *shell_data, int code);
 void cd_pd(shell_data *shell_data);
+void cd_home(shell_data *shell_data)
 
 /*to read input*/
 void assign_line(char **outputptr, size_t *op_n, char *result, size_t ch);

@@ -11,7 +11,7 @@
 void cd_pd(shell_data *shell_data)
 {
 	char pwd[PATH_MAX];
-	char *cp_pwd, *parent_dir;
+	char *directory, *cp_pwd, *parent_dir;
 
 	/* Get the current working directory */
 	getcwd(pwd, sizeof(pwd));
@@ -19,7 +19,7 @@ void cd_pd(shell_data *shell_data)
 
 	set_env_var("OLDPWD", cp_pwd, shell_data);
 
-	char *directory = shell_data->args[1];
+	*directory = shell_data->args[1];
 
 	/* If the directory is . , no change is needed */
 	if (_strcmp(".", directory) == 0)
@@ -60,7 +60,7 @@ int cd_dr(shell_data *shell_data)
 	char *dr;
 	int is_home, ishome1, is_dash;
 
-	dr = shdata->args[1];
+	dr = shell_data->args[1];
 
 	if (dr)
 	{
@@ -109,10 +109,10 @@ void cd_go(shell_data *shell_data)
 
 	getcwd(pwd, sizeof(pwd));
 
-	dr = shdata->args[1];
+	dr = shell_data->args[1];
 	if (chdir(dir) == -1)
 	{
-		error_code(shdata, 2);
+		error_code(shell_data, 2);
 		return;
 	}
 

@@ -64,10 +64,10 @@ void set_output(char **output_ptr, size_t *op_n, char *result, size_t ret_n)
  */
 ssize_t read_output(char **output_ptr, size_t *op_n, FILE *input_stream)
 {
-	static ssize_t read_bytes;
-	ssize_t ret_n;
+	static ssize_t output;
+	ssize_t retval;
 
-	read_bytes = 0;
+	output = 0;
 	ret_n = read_or_eof(output_ptr, op_n, input_stream);
 
 	return (ret_n);
@@ -83,7 +83,7 @@ ssize_t read_output(char **output_ptr, size_t *op_n, FILE *input_stream)
 ssize_t read_or_eof(char **output_ptr, size_t *op_n, FILE *input_stream)
 {
 	int i;
-	ssize_t ret_n;
+	ssize_t retval;
 	char *result;
 
 	result = malloc(sizeof(char) * MAX_RESULT_SIZE);
@@ -92,14 +92,14 @@ ssize_t read_or_eof(char **output_ptr, size_t *op_n, FILE *input_stream)
 
 	while ((i = fgetc(input_stream)) != '\n' && i != EOF)
 	{
-	if (read_bytes >= MAX_RESULT_SIZE)
-	result = _resize(result, read_bytes, read_bytes + 1);
+	if (output >= MAX_RESULT_SIZE)
+	result = _resize(result, output, output + 1);
 
-	result[read_bytes++] = (char)i;
+	result[output++] = (char)i;
 	}
 
-	result[read_bytes] = '\0';
-	set_output(output_ptr, op_n, result, read_bytes);
+	result[output] = '\0';
+	set_output(output_ptr, op_n, result, output);
 
-	return (read_bytes);
+	return (output);
 }

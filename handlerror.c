@@ -107,10 +107,11 @@ char *pathError126(shell_data *data)
 	length += _strlen(data->arguments[0]) + 24;
 	message = malloc(sizeof(char) * (length + 1));
 
-	if (message == 0) {
+	if (message == 0)
+	{
 	free(message);
 	free(counterString);
- 	return (NULL);
+	return (NULL);
 	}
 
 	/* Concatenate program name, counter, command, and error message */
@@ -119,11 +120,11 @@ char *pathError126(shell_data *data)
 	_strcat(message, counterString);
 	_strcat(message, ": ");
 	_strcat(message, data->arguments[0]);
-    _strcat(message, ": Permission denied\n");
-    _strcat(message, "\0");
-    free(counterString);
+	_strcat(message, ": Permission denied\n");
+	_strcat(message, "\0");
+	free(counterString);
 
-    return (message);
+	return (message);
 }
 
 /**
@@ -133,36 +134,41 @@ char *pathError126(shell_data *data)
  *
  * Return: Error message.
  */
-char *errorMessage(shell_data *data) {
-    int length, lenId;
+char *errorMessage(shell_data *data)
+{
 
-    char *message, *counterString, *miss;
+	int length, lenId;
 
-    counterString = intToString(data->counter);
+	char *message, *counterString, *miss;
 
-  
-    if (data->arguments[1][0] == '-') {
-        message = ": Illegal option ";
-        lenId = 2;
-    } else {
-        message = ": can't cd to ";
-        lenId = _strlen(data->arguments[1]);
-    }
+	counterString = intToString(data->counter);
 
-    length = _strlen(data->program_name) + _strlen(data->arguments[0]);
-    length += _strlen(counterString) + _strlen(message) + lenId + 5;
-    error = malloc(sizeof(char) * (length + 1));
+	if (data->arguments[1][0] == '-')
+	{
+	message = ": Illegal option ";
+	lenId = 2;
+	}
+	else
+	{
+		message = ": can't cd to ";
+		lenId = _strlen(data->arguments[1]);
+	}
 
-    if (error == 0) {
-        free(counterString);
-        return NULL;
-    }
+	length = _strlen(data->program_name) + _strlen(data->arguments[0]);
+	length += _strlen(counterString) + _strlen(message) + lenId + 5;
+	error = malloc(sizeof(char) * (length + 1));
 
-    error = concatErrorMsg(data, miss, message, counterString);
+	if (error == 0)
+	{
+	free(counterString);
+	return (NULL);
+	}
 
-    free(counterString);
+	error = concatErrorMsg(data, miss, message, counterString);
 
-    return (message);
+	free(counterString);
+
+	return (message);
 }
 
 /**
@@ -172,31 +178,35 @@ char *errorMessage(shell_data *data) {
  *
  * Return: Error message.
  */
-char *commandNotFound(shell_data *data) {
-    int length;
-    char *message;
-    char *counterString;
+char *commandNotFound(shell_data *data)
+{
 
-    counterString = intToString(data->counter);
-    length = _strlen(data->program_name) + _strlen(counterString);
-    length += _strlen(data->arguments[0]) + 16;
-    message = malloc(sizeof(char) * (length + 1));
+	int length;
+	char *message;
+	char *counterString;
 
-    if (message == 0) {
-        free(message);
-        free(counterString);
-        return (NULL);
-    }
+	counterString = intToString(data->counter);
+	length = _strlen(data->program_name) + _strlen(counterString);
+	length += _strlen(data->arguments[0]) + 16;
+	message = malloc(sizeof(char) * (length + 1));
 
-    // Concatenate program name, counter, command, and error message
-    _strcpy(message, data->program_name);
-    _strcat(message, ": ");
-    _strcat(message, counterString);
-    _strcat(message, ": ");
-    _strcat(message, data->arguments[0]);
-    _strcat(message, ": not found\n");
-    _strcat(message, "\0");
-    free(counterString);
+	if (message == 0)
+	{
 
-    return (message);
-} 
+		free(message);
+		free(counterString);
+		return (NULL);
+	}
+
+    /* Concatenate program name, counter, command, and error message */
+	_strcpy(message, data->program_name);
+	_strcat(message, ": ");
+	_strcat(message, counterString);
+	_strcat(message, ": ");
+	_strcat(message, data->arguments[0]);
+	_strcat(message, ": not found\n");
+	_strcat(message, "\0");
+	free(counterString);
+
+	return (message);
+}

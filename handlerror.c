@@ -113,12 +113,12 @@ char *pathError126(shell_data *data)
  	return (NULL);
 	}
 
-    /* Concatenate program name, counter, command, and error message */
-    _strcpy(message, data->program_name);
-    _strcat(message, ": ");
-    _strcat(message, counterString);
-    _strcat(message, ": ");
-    _strcat(message, data->arguments[0]);
+	/* Concatenate program name, counter, command, and error message */
+	_strcpy(message, data->program_name);
+	_strcat(message, ": ");
+	_strcat(message, counterString);
+	_strcat(message, ": ");
+	_strcat(message, data->arguments[0]);
     _strcat(message, ": Permission denied\n");
     _strcat(message, "\0");
     free(counterString);

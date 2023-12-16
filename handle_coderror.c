@@ -6,33 +6,36 @@
  */
 int error_code(shell_data *data, int code)
 {
-  char *message = NULL;
+	char *message = NULL;
 
-  switch (code) {
-    case -1:
-      message = handleEnvError(data);
-      break;
-    case 126:
-      message = handlePathError126(data);
-      break;
-    case 127:
-      message = handleCmdNotFoundError(data);
-      break;
-    case 2:
-			if (_strcmp("exit", data->arguments[0]) == 0)
-				message = displayExitShellMessage(data);
-			else if (_strcmp("cd", data->arguments[0]) == 0)
-				message = handleError(data);
-			break;
+	switch (code)
+	{
+	case -1:
+	message = handleEnvError(data);
+	break;
+	case 126:
+	message = handlePathError126(data);
+	break;
+	case 127:
+	message = handleCmdNotFoundError(data);
+	break;
+	case 2:
+
+	if (_strcmp("exit", data->arguments[0]) == 0)
+	message = displayExitShellMessage(data);
+	else if (_strcmp("cd", data->arguments[0]) == 0)
+	message = handleError(data);
+	break;
 	}
 
-	if (message) {
-		write(STDERR_FILENO, message, _strlen(message));
-		free(message);
+	if (message)
+	{
+	write(STDERR_FILENO, message, _strlen(message));
+	free(message);
 	}
 
 	data->statusCode = code;
-	return code;
+	return (code);
 }
 
 /**
@@ -54,10 +57,11 @@ int (*findBuiltIn(char *cmd))(shell_data *) {
 
 	int i;
 
-	for (i = 0; builtIns[i].name; i++) {
+	for (i = 0; builtIns[i].name; i++)
+	{
 		if (_strcmp(builtIns[i].name, cmd) == 0)
-			return builtIns[i].functionPointer;
+			return (builtIns[i].functionPointer);
 	}
 
-	return NULL;
+	return (NULL);
 }
